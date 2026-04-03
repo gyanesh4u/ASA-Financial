@@ -1,4 +1,14 @@
-# ASA Financial - Playwright Test Automation Framework
+# 🏢 ASA Financial - Playwright Test Automation Framework
+
+![ASA Financial Logo](assets/asa-logo.png)
+
+```
+    ╔═══════════════════════════════════════════════════════════╗
+    ║                    ASA FINANCIAL                          ║
+    ║          Test Automation Framework                        ║
+    ║         Powered by Playwright & JavaScript                ║
+    ╚═══════════════════════════════════════════════════════════╝
+```
 
 A professional, enterprise-grade test automation framework built with Playwright and JavaScript, featuring a Base Page Architecture for clean, maintainable, and scalable testing.
 
