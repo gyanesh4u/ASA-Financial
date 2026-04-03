@@ -1,9 +1,11 @@
-class ManageFintech {
+const { BasePage } = require('./base.page');
+
+class ManageFintech extends BasePage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
-    this.page = page;
+    super(page);
     
     // Header Elements
     this.pageTitle = page.locator('h1, .page-title, [class*="title"]');
@@ -15,10 +17,15 @@ class ManageFintech {
     this.sideMenu = page.locator('[class*="sidebar"], [class*="menu"], nav');
     this.mainContent = page.locator('[class*="content"], main');
     
-    // Common Dashboard Components
-    this.cards = page.locator('[class*="card"]');
-    this.buttons = page.locator('button');
-    this.tables = page.locator('table');
+  // Navigation Links
+  this.registrationLink = page.locator('a[href*="fintech-portal/registration"]').first();
+  this.dashboardLink = page.locator('a:has-text("Dashboard"), [href*="dashboard"]');
+  this.profileLink = page.locator('a:has-text("Profile"), [href*="profile"]');
+  
+  // Common Dashboard Components
+  this.cards = page.locator('[class*="card"]');
+  this.buttons = page.locator('button');
+  this.tables = page.locator('table');
   }
 
   async isPageLoaded() {
@@ -69,6 +76,21 @@ class ManageFintech {
 
   async takeScreenshot(name) {
     await this.page.screenshot({ path: `screenshots/${name}.png` });
+  }
+
+  async clickRegistration() {
+    await this.registrationLink.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async clickDashboard() {
+    await this.dashboardLink.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async clickProfile() {
+    await this.profileLink.click();
+    await this.page.waitForLoadState('networkidle');
   }
 }
 

@@ -1,9 +1,11 @@
-class LoginPage {
+const { BasePage } = require('./base.page');
+
+class LoginPage extends BasePage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
-    this.page = page;
+    super(page);
     this.usernameInput = page.locator('#username');
     this.passwordInput = page.locator('#password');
     this.loginButton = page.locator('button:has-text("Login")');
@@ -11,8 +13,7 @@ class LoginPage {
   }
 
   async goto() {
-    await this.page.goto('/#/login');
-    await this.page.waitForLoadState('networkidle');
+    await super.goto('/#/login');
   }
 
   async login(username, password) {
