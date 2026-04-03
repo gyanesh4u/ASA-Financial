@@ -3,7 +3,7 @@ const { expect } = require('@playwright/test');
 
 // Test credentials
 const TEST_EMAIL = 'gyanesh.kamal@asa.financial';
-const TEST_PASSWORD = 'password123';
+const TEST_PASSWORD = 'Windowvista1#';
 
 test.describe('ASA Central Login Tests', () => {
   
