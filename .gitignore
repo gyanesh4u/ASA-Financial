@@ -4,6 +4,9 @@ node_modules/
 # Test results and artifacts
 test-results/
 playwright-report/
+allure-results/
+allure-report/
+screenshots/
 .last-run.json
 
 # Environment

@@ -12,7 +12,8 @@ const config = {
   reporter: [
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['junit', { outputFile: 'test-results/results.xml' }]
+    ['junit', { outputFile: 'test-results/results.xml' }],
+    ['allure-playwright', { outputFolder: 'allure-results' }]
   ],
   use: {
     actionTimeout: 10000,

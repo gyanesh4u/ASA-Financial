@@ -7,6 +7,7 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:report": "npx playwright show-report",
+    "test:allure": "npx allure generate allure-results -o allure-report && npx allure open allure-report",
     "lint": "npx eslint . --ext .js"
   },
   "keywords": [],
@@ -14,6 +15,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "^1.58.2",
+    "allure-commandline": "^2.38.1",
+    "allure-playwright": "^3.6.0"
   }
 }
