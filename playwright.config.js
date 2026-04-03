@@ -5,10 +5,10 @@ const config = {
   expect: {
     timeout: 5000,
   },
-  fullyParallel: true,
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   reporter: [
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
@@ -18,7 +18,7 @@ const config = {
     actionTimeout: 10000,
     navigationTimeout: 30000,
     baseURL: 'https://asacentraldev.asacore.com',
-    headless: true,
+    headless: false,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
@@ -27,9 +27,8 @@ const config = {
   },
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
-    { name: 'firefox', use: { browserName: 'firefox' } },
-    { name: 'webkit', use: { browserName: 'webkit' } },
   ],
+  // Only Chromium (Chrome) browser is configured
   outputDir: 'test-results/',
 };
 

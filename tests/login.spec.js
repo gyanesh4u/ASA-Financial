@@ -1,21 +1,15 @@
-const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('./pages/login.page');
+const { test } = require('./fixtures/login.fixture');
+const { expect } = require('@playwright/test');
 
 test.describe('ASA Central Login Tests', () => {
-  let loginPage;
-
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page);
-    await loginPage.goto();
-  });
-
-  test('should display login page with all elements', async () => {
+  
+  test('should display login page with all elements', async ({ loginPage }) => {
     expect(await loginPage.isUsernameFieldVisible()).toBeTruthy();
     expect(await loginPage.isPasswordFieldVisible()).toBeTruthy();
     expect(await loginPage.isLoginButtonVisible()).toBeTruthy();
   });
 
-  test('should allow user to enter username and password', async () => {
+  test('should allow user to enter username and password', async ({ loginPage }) => {
     await loginPage.usernameInput.fill('testuser');
     await loginPage.passwordInput.fill('password123');
 
@@ -23,7 +17,7 @@ test.describe('ASA Central Login Tests', () => {
     await expect(loginPage.passwordInput).toHaveValue('password123');
   });
 
-  test('should have functional login button', async ({ page }) => {
+  test('should have functional login button', async ({ loginPage }) => {
     await loginPage.usernameInput.fill('testuser');
     await loginPage.passwordInput.fill('password123');
 
@@ -31,7 +25,7 @@ test.describe('ASA Central Login Tests', () => {
     expect(loginButtonText).toContain('Login');
   });
 
-  test('should clear form fields', async () => {
+  test('should clear form fields', async ({ loginPage }) => {
     await loginPage.usernameInput.fill('testuser');
     await loginPage.passwordInput.fill('password123');
     
@@ -41,8 +35,7 @@ test.describe('ASA Central Login Tests', () => {
     await expect(loginPage.passwordInput).toHaveValue('');
   });
 
-  test('should have remember me checkbox', async ({ page }) => {
-    const rememberCheckbox = page.locator('#custom-check-1');
-    expect(await rememberCheckbox.isVisible()).toBeTruthy();
+  test('should have remember me checkbox', async ({ loginPage }) => {
+    expect(await loginPage.rememberMeCheckbox.isVisible()).toBeTruthy();
   });
 });
