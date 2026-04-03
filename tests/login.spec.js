@@ -33,5 +33,8 @@ test.describe('ASA Central Login Tests', () => {
     const newPageTitle = await loginPage.page.title();
     console.log('Page Title after login:', newPageTitle);
     expect(newPageTitle).toBe('Manage Fintech');
+    
+    // Assert title using Playwright assertion
+    await expect(loginPage.page).toHaveTitle('Manage Fintech');
   });
 });
