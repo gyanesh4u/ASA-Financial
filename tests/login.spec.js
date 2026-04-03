@@ -8,6 +8,20 @@ const TEST_PASSWORD = 'Windowvista1#';
 test.describe('ASA Central Login Tests', () => {
   
   test('should allow user to login with valid credentials', async ({ loginPage }, testInfo) => {
+    // Allure Annotations
+    testInfo.annotations.push(
+      { type: 'feature', description: 'Authentication' },
+      { type: 'story', description: 'User Login' },
+      { type: 'severity', description: 'critical' },
+      { type: 'owner', description: 'QA Team' },
+      { type: 'tag', description: 'smoke' },
+      { type: 'tag', description: 'authentication' },
+      { type: 'tag', description: 'regression' }
+    );
+    
+    // Test Description
+    testInfo.description = 'Verify user can successfully login with valid credentials and reach dashboard';
+    
     // Print page title
     const pageTitle = await loginPage.page.title();
     console.log('Page Title:', pageTitle);
